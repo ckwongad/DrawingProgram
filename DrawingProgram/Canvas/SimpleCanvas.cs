@@ -123,6 +123,8 @@ namespace DrawingProgram.Canvas
             var gridX = convertToGridCoordinate(fillCommandArgs.X);
             var gridY = convertToGridCoordinate(fillCommandArgs.Y);
             var colorBeforeFill = Grid[gridX, gridY];
+            if (colorBeforeFill == fillCommandArgs.Color) return;
+
             var cellsToFill = new List<Coordinate> { new Coordinate(gridX, gridY) };
             while (cellsToFill.Count > 0)
             {
