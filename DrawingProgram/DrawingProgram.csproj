@@ -43,10 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandParser\CommadParserErrorMsg.cs" />
-    <Compile Include="CommandParser\CommandParser.cs" />
-    <Compile Include="CommandParser\CommandParserResult.cs" />
+    <Compile Include="Canvas\SimpleCanvas.cs" />
+    <Compile Include="Parser\CommadParserErrorMsg.cs" />
+    <Compile Include="Parser\CommandParser.cs" />
+    <Compile Include="Parser\CommandParserException\CommandParserException.cs" />
+    <Compile Include="Parser\CommandParserException\InvalidCommandTypeException.cs" />
+    <Compile Include="Command\CanvasCommand.cs" />
+    <Compile Include="Command\CommandArgs\FillCommandArgs.cs" />
+    <Compile Include="Command\FillCommand.cs" />
     <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\LineCommand.cs" />
+    <Compile Include="Command\RectangleCommand.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

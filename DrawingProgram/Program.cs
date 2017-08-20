@@ -1,4 +1,6 @@
-﻿using DrawingProgram.Command;
+﻿using DrawingProgram.Canvas;
+using DrawingProgram.Command;
+using DrawingProgram.Parser;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +13,9 @@ namespace DrawingProgram
     {
         static void Main(string[] args)
         {
+            var canvas = new SimpleCanvas();
+            var commandParser = new CommandParser(canvas);
+
             while (true)
             {
                 Console.Write("enter command: ");
@@ -20,9 +25,12 @@ namespace DrawingProgram
                     break;
                 }
 
-                Console.Write("You typed "); // Report output
-                Console.Write(line.Length);
-                Console.WriteLine(" character(s)");
+                try
+                {
+                    ICommand command = commandParser.ParseCommand(line);
+                } catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
+                }
             }
         }
     }
