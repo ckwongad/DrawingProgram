@@ -74,8 +74,8 @@ namespace DrawingProgramTest
             string cmd = "C 5 5";
             var command = commandParser.ParseCommand(cmd) as CanvasCommand;
             Assert.IsNotNull(command);
-            Assert.AreEqual<int>(command.Args[0], 5);
-            Assert.AreEqual<int>(command.Args[1], 5);
+            Assert.AreEqual<int>(5, command.Args[0]);
+            Assert.AreEqual<int>(5, command.Args[1]);
         }
 
         [TestMethod]
@@ -122,10 +122,10 @@ namespace DrawingProgramTest
             string cmd = "L 5 5 3 4";
             LineCommand command = commandParser.ParseCommand(cmd) as LineCommand;
             Assert.IsNotNull(command);
-            Assert.AreEqual<int>(command.Args[0], 5);
-            Assert.AreEqual<int>(command.Args[1], 5);
-            Assert.AreEqual<int>(command.Args[2], 3);
-            Assert.AreEqual<int>(command.Args[3], 4);
+            Assert.AreEqual<int>(5, command.Args[0]);
+            Assert.AreEqual<int>(5, command.Args[1]);
+            Assert.AreEqual<int>(3, command.Args[2]);
+            Assert.AreEqual<int>(4, command.Args[3]);
         }
 
         [TestMethod]
@@ -192,10 +192,10 @@ namespace DrawingProgramTest
             string cmd = "R 5 5 3 4";
             RectangleCommand command = commandParser.ParseCommand(cmd) as RectangleCommand;
             Assert.IsNotNull(command);
-            Assert.AreEqual<int>(command.Args[0], 5);
-            Assert.AreEqual<int>(command.Args[1], 5);
-            Assert.AreEqual<int>(command.Args[2], 3);
-            Assert.AreEqual<int>(command.Args[3], 4);
+            Assert.AreEqual<int>(5, command.Args[0]);
+            Assert.AreEqual<int>(5, command.Args[1]);
+            Assert.AreEqual<int>(3, command.Args[2]);
+            Assert.AreEqual<int>(4, command.Args[3]);
         }
 
         [TestMethod]
@@ -262,9 +262,9 @@ namespace DrawingProgramTest
             string cmd = "B 5 5 c";
             FillCommand command = commandParser.ParseCommand(cmd) as FillCommand;
             Assert.IsNotNull(command);
-            Assert.AreEqual<int>(command.FillCommandArgs.X, 5);
-            Assert.AreEqual<int>(command.FillCommandArgs.Y, 5);
-            Assert.AreEqual<char>(command.FillCommandArgs.Color, 'c');
+            Assert.AreEqual<int>(5, command.FillCommandArgs.X);
+            Assert.AreEqual<int>(5, command.FillCommandArgs.Y);
+            Assert.AreEqual<char>('c', command.FillCommandArgs.Color);
         }
 
         [TestMethod]
