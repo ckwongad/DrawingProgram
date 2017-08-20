@@ -66,10 +66,10 @@ namespace DrawingProgram.Parser
                 throw new ArgumentException(CommadParserErrorMsg.InvalidCommandArgLength("Line", 4, args.Length));
             }
 
-            int x1 = ParseNonNegativeIntArg(args[0]);
-            int y1 = ParseNonNegativeIntArg(args[1]);
-            int x2 = ParseNonNegativeIntArg(args[2]);
-            int y2 = ParseNonNegativeIntArg(args[3]);
+            int x1 = ParsePosIntArg(args[0]);
+            int y1 = ParsePosIntArg(args[1]);
+            int x2 = ParsePosIntArg(args[2]);
+            int y2 = ParsePosIntArg(args[3]);
 
             return new LineCommand(_canvas, new int[4] { x1, y1, x2, y2 });
         }
@@ -84,10 +84,10 @@ namespace DrawingProgram.Parser
                 throw new ArgumentException(CommadParserErrorMsg.InvalidCommandArgLength("Rectangle", 4, args.Length));
             }
 
-            int x1 = ParseNonNegativeIntArg(args[0]);
-            int y1 = ParseNonNegativeIntArg(args[1]);
-            int x2 = ParseNonNegativeIntArg(args[2]);
-            int y2 = ParseNonNegativeIntArg(args[3]);
+            int x1 = ParsePosIntArg(args[0]);
+            int y1 = ParsePosIntArg(args[1]);
+            int x2 = ParsePosIntArg(args[2]);
+            int y2 = ParsePosIntArg(args[3]);
 
             return new RectangleCommand(_canvas, new int[4] { x1, y1, x2, y2 });
         }
@@ -102,8 +102,8 @@ namespace DrawingProgram.Parser
                 throw new ArgumentException(CommadParserErrorMsg.InvalidCommandArgLength("Fill", 3, args.Length));
             }
 
-            int x = ParseNonNegativeIntArg(args[0]);
-            int y = ParseNonNegativeIntArg(args[1]);
+            int x = ParsePosIntArg(args[0]);
+            int y = ParsePosIntArg(args[1]);
             char fillColor = ParseCharArg(args[2]);
 
             return new FillCommand(_canvas, new FillCommandArgs(x, y, fillColor));
