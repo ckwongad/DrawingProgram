@@ -87,12 +87,12 @@ namespace DrawingProgramTest
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawLine(new int[] { 0, 1, 2, 1 }); },
-                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width - 1, 2)
+                () => { simpleCanvas.DrawLine(new int[] { 1, 2, 3, 2 }); },
+                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width, 3)
             );
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawLine(new int[] { 4, 1, 0, 1 }); },
-                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width - 1, 4)
+                () => { simpleCanvas.DrawLine(new int[] { 5, 2, 1, 2 }); },
+                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width, 5)
             );
         }
 
@@ -103,12 +103,12 @@ namespace DrawingProgramTest
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawLine(new int[] { 0, 1, 0, 4 }); },
-                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height - 1, 4)
+                () => { simpleCanvas.DrawLine(new int[] { 1, 2, 1, 5 }); },
+                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height, 5)
             );
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawLine(new int[] { 2, 7, 2, 3 }); },
-                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height - 1, 7)
+                () => { simpleCanvas.DrawLine(new int[] { 3, 8, 3, 4 }); },
+                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height, 8)
             );
         }
 
@@ -119,7 +119,7 @@ namespace DrawingProgramTest
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawLine(new int[] { 0, 1, 2, 3 }); },
+                () => { simpleCanvas.DrawLine(new int[] { 1, 2, 3, 4 }); },
                 SimpleCanvasErrorMsg.NotVerticalOrHorizontal
             );
         }
@@ -130,7 +130,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawLine(new int[] { 1, 0, 1, 2 });
+            simpleCanvas.DrawLine(new int[] { 2, 1, 2, 3 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -142,7 +142,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawLine(new int[] { 1, 2, 1, 0 });
+            simpleCanvas.DrawLine(new int[] { 2, 3, 2, 1 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -154,7 +154,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawLine(new int[] { 1, 2, 3, 2 });
+            simpleCanvas.DrawLine(new int[] { 2, 3, 4, 3 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -166,7 +166,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawLine(new int[] { 3, 2, 1, 2 });
+            simpleCanvas.DrawLine(new int[] { 4, 3, 2, 3 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -178,7 +178,7 @@ namespace DrawingProgramTest
         public void DrawRectangleBeforeCanvasCreatedThrowException()
         {
             Assert.Throws<InvalidOperationException>(
-                () => { simpleCanvas.DrawRectangle(new int[] { 1, 2, 1, 2 }); },
+                () => { simpleCanvas.DrawRectangle(new int[] { 2, 3, 2, 3 }); },
                 SimpleCanvasErrorMsg.CanvasNotCreated
             );
         }
@@ -190,12 +190,12 @@ namespace DrawingProgramTest
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawRectangle(new int[] { 0, 1, 2, 1 }); },
-                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width - 1, 2)
+                () => { simpleCanvas.DrawRectangle(new int[] { 1, 2, 3, 2 }); },
+                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width, 3)
             );
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawRectangle(new int[] { 4, 1, 0, 1 }); },
-                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width - 1, 4)
+                () => { simpleCanvas.DrawRectangle(new int[] { 5, 2, 1, 2 }); },
+                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width, 5)
             );
         }
 
@@ -206,12 +206,12 @@ namespace DrawingProgramTest
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawRectangle(new int[] { 0, 1, 1, 2 }); },
-                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height - 1, 2)
+                () => { simpleCanvas.DrawRectangle(new int[] { 1, 2, 2, 3 }); },
+                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height, 3)
             );
             Assert.Throws<ArgumentException>(
-                () => { simpleCanvas.DrawRectangle(new int[] { 1, 4, 0, 1 }); },
-                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height - 1, 4)
+                () => { simpleCanvas.DrawRectangle(new int[] { 2, 5, 1, 2 }); },
+                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(height, 5)
             );
         }
 
@@ -221,7 +221,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 1, 0, 1, 2 });
+            simpleCanvas.DrawRectangle(new int[] { 2, 1, 2, 3 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -232,7 +232,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 1, 2, 1, 0 });
+            simpleCanvas.DrawRectangle(new int[] { 2, 3, 2, 1 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0x\0\0|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -244,7 +244,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 1, 2, 3, 2 });
+            simpleCanvas.DrawRectangle(new int[] { 2, 3, 4, 3 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -256,7 +256,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 3, 2, 1, 2});
+            simpleCanvas.DrawRectangle(new int[] { 4, 3, 2, 3});
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0\0\0\0|\r\n------\r\n", printer.ToString());
@@ -268,7 +268,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 3, 3, 1, 1 });
+            simpleCanvas.DrawRectangle(new int[] { 4, 4, 2, 2 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0x\0x|\r\n|\0xxx|\r\n------\r\n", printer.ToString());
@@ -280,7 +280,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 1, 3, 3, 1 });
+            simpleCanvas.DrawRectangle(new int[] { 2, 4, 4, 2 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0x\0x|\r\n|\0xxx|\r\n------\r\n", printer.ToString());
@@ -292,7 +292,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 1, 1, 3, 3 });
+            simpleCanvas.DrawRectangle(new int[] { 2, 2, 4, 4 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0x\0x|\r\n|\0xxx|\r\n------\r\n", printer.ToString());
@@ -304,7 +304,7 @@ namespace DrawingProgramTest
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
 
-            simpleCanvas.DrawRectangle(new int[] { 3, 1, 1, 3 });
+            simpleCanvas.DrawRectangle(new int[] { 4, 2, 2, 4 });
             simpleCanvas.Print();
 
             Assert.AreEqual<string>("------\r\n|\0\0\0\0|\r\n|\0xxx|\r\n|\0x\0x|\r\n|\0xxx|\r\n------\r\n", printer.ToString());
@@ -315,7 +315,7 @@ namespace DrawingProgramTest
         [TestMethod]
         public void FillBeforeCanvasCreatedThrowException()
         {
-            var fillCommandArgs = new FillCommandArgs(0, 0, 'c');
+            var fillCommandArgs = new FillCommandArgs(1, 1, 'c');
             Assert.Throws<InvalidOperationException>(
                 () => { simpleCanvas.Fill(fillCommandArgs); },
                 SimpleCanvasErrorMsg.CanvasNotCreated
@@ -327,11 +327,11 @@ namespace DrawingProgramTest
         {
             int width = 2, height = 2;
             simpleCanvas.CreateCanvas(new int[] { width, height });
-            var fillCommandArgs = new FillCommandArgs(2, 0, 'c');
+            var fillCommandArgs = new FillCommandArgs(3, 1, 'c');
 
             Assert.Throws<ArgumentException>(
                 () => { simpleCanvas.Fill(fillCommandArgs); },
-                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width - 1, 2)
+                SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(width, 3)
             );
         }
 
@@ -340,11 +340,11 @@ namespace DrawingProgramTest
         {
             int width = 2, height = 2;
             simpleCanvas.CreateCanvas(new int[] { width, height });
-            var fillCommandArgs = new FillCommandArgs(0, 3, 'c');
+            var fillCommandArgs = new FillCommandArgs(1, 4, 'c');
 
             Assert.Throws<ArgumentException>(
                 () => { simpleCanvas.Fill(fillCommandArgs); },
-                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(width - 1, 3)
+                SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(width, 4)
             );
         }
 
@@ -353,7 +353,7 @@ namespace DrawingProgramTest
         {
             int width = 2, height = 2;
             simpleCanvas.CreateCanvas(new int[] { width, height });
-            var fillCommandArgs = new FillCommandArgs(0, 0, 'c');
+            var fillCommandArgs = new FillCommandArgs(1, 1, 'c');
             simpleCanvas.Fill(fillCommandArgs);
             simpleCanvas.Print();
 
@@ -365,8 +365,8 @@ namespace DrawingProgramTest
         {
             int width = 4, height = 4;
             simpleCanvas.CreateCanvas(new int[] { width, height });
-            simpleCanvas.DrawRectangle(new int[] { 0, 0, 3, 3 });
-            var fillCommandArgs = new FillCommandArgs(2, 2, 'a');
+            simpleCanvas.DrawRectangle(new int[] { 1, 1, 4, 4 });
+            var fillCommandArgs = new FillCommandArgs(3, 3, 'a');
             simpleCanvas.Fill(fillCommandArgs);
             simpleCanvas.Print();
 
@@ -378,8 +378,8 @@ namespace DrawingProgramTest
         {
             int width = 6, height = 6;
             simpleCanvas.CreateCanvas(new int[] { width, height });
-            simpleCanvas.DrawRectangle(new int[] { 2, 1, 4, 3 });
-            var fillCommandArgs = new FillCommandArgs(1, 1, 'f');
+            simpleCanvas.DrawRectangle(new int[] { 3, 2, 5, 4 });
+            var fillCommandArgs = new FillCommandArgs(2, 2, 'f');
             simpleCanvas.Fill(fillCommandArgs);
             simpleCanvas.Print();
 
