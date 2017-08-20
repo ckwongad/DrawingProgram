@@ -1,3 +1,8 @@
+How to Use:
+1. Open DrawingProgram.sln with visual studio 2015
+2. Press "F5"
+
+
 Assumptions
 1. Call create canvas twice will delete the first canvas
 2. max width and height of canvas = int.MaxValue - 2
@@ -5,6 +10,14 @@ Assumptions
 4. drawing line out of canvas is not allowed
 5. drawing rectangle out of canvas is not allowed
 6. fill out of canvas is not allowed
+7. Commads are case-sensitive
+
 
 More Test Cases:
-1. _canvas of Comands returned form CommandParser should not be the SimpleCanvas used in initialization
+1. _canvas of Comands returned from CommandParser should not be the SimpleCanvas used in initialization
+2. use Moq to do behavior test for Invoker and Command
+
+
+Improvement:
+1. Should create a ICanvas Interface and SimpleCanvas should implement ICanvas interface
+2. Should create a command args class for each command instead of using int array
