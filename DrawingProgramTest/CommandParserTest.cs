@@ -4,13 +4,14 @@ using DrawingProgram.Parser;
 using MSTestExtensions;
 using DrawingProgram.Parser.CommandParserException;
 using DrawingProgram.Command;
+using DrawingProgram.Printer;
 
 namespace DrawingProgramTest
 {
     [TestClass]
     public class CommandParserTest : BaseTest
     {
-        private CommandParser commandParser = new CommandParser(new DrawingProgram.Canvas.SimpleCanvas());
+        private CommandParser commandParser = new CommandParser(new DrawingProgram.Canvas.SimpleCanvas(new StringPrinter()));
 
         [TestInitialize]
         public void SetupCommandParser()
@@ -71,7 +72,7 @@ namespace DrawingProgramTest
         public void ValidCanvasCommand()
         {
             string cmd = "C 5 5";
-            LineCommand command = commandParser.ParseCommand(cmd) as LineCommand;
+            var command = commandParser.ParseCommand(cmd) as CanvasCommand;
             Assert.IsNotNull(command);
             Assert.AreEqual<int>(command.Args[0], 5);
             Assert.AreEqual<int>(command.Args[1], 5);
@@ -99,7 +100,7 @@ namespace DrawingProgramTest
             string cmd = "C w h";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("w")
+                CommadParserErrorMsg.InvalidPosIntCommandArg("w")
             );
         }
 
@@ -109,7 +110,7 @@ namespace DrawingProgramTest
             string cmd = "C 12 h";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("h")
+                CommadParserErrorMsg.InvalidPosIntCommandArg("h")
             );
         }
         #endregion Cancas Command
@@ -149,7 +150,7 @@ namespace DrawingProgramTest
             string cmd = "L x1 y1 x2 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("x1")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("x1")
             );
         }
 
@@ -159,7 +160,7 @@ namespace DrawingProgramTest
             string cmd = "L 3 y1 x2 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("y1")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("y1")
             );
         }
 
@@ -169,7 +170,7 @@ namespace DrawingProgramTest
             string cmd = "L 3 3 x2 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("x2")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("x2")
             );
         }
 
@@ -179,7 +180,7 @@ namespace DrawingProgramTest
             string cmd = "L 3 3 5 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("y2")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("y2")
             );
         }
         #endregion Line Command Parser
@@ -219,7 +220,7 @@ namespace DrawingProgramTest
             string cmd = "R x1 y1 x2 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("x1")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("x1")
             );
         }
 
@@ -229,7 +230,7 @@ namespace DrawingProgramTest
             string cmd = "R 3 y1 x2 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("y1")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("y1")
             );
         }
 
@@ -239,7 +240,7 @@ namespace DrawingProgramTest
             string cmd = "R 3 3 x2 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("x2")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("x2")
             );
         }
 
@@ -249,7 +250,7 @@ namespace DrawingProgramTest
             string cmd = "R 3 3 5 y2";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("y2")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("y2")
             );
         }
         #endregion Rectangle Command Parser
@@ -263,7 +264,7 @@ namespace DrawingProgramTest
             Assert.IsNotNull(command);
             Assert.AreEqual<int>(command.FillCommandArgs.X, 5);
             Assert.AreEqual<int>(command.FillCommandArgs.Y, 5);
-            Assert.AreEqual<int>(command.FillCommandArgs.Color, 'c');
+            Assert.AreEqual<char>(command.FillCommandArgs.Color, 'c');
         }
 
         [TestMethod]
@@ -288,7 +289,7 @@ namespace DrawingProgramTest
             string cmd = "B x y c";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("x")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("x")
             );
         }
 
@@ -298,7 +299,7 @@ namespace DrawingProgramTest
             string cmd = "B 5 y c";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("y")
+                CommadParserErrorMsg.InvalidNonNegativeIntCommandArg("y")
             );
         }
 
@@ -308,7 +309,7 @@ namespace DrawingProgramTest
             string cmd = "B 5 5 cc";
             Assert.Throws<ArgumentException>(
                 () => { commandParser.ParseCommand(cmd); },
-                CommadParserErrorMsg.InvalidIntCommandArg("cc")
+                CommadParserErrorMsg.InvalidCharCommandArg("cc")
             );
         }
         #endregion Fill Command Parser

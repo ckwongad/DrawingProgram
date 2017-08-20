@@ -14,10 +14,16 @@ namespace DrawingProgram.Parser
             return "command type is invalid: " + cmdType;
         }
 
-        public static string InvalidIntCommandArg(string arg)
+        public static string InvalidNonNegativeIntCommandArg(string arg)
         {
             return String.Format("Command " +
-                    "expects an integer. Instead \"{0}\" is provided.", arg);
+                    "expects a non-negative integer. Instead \"{0}\" is provided.", arg);
+        }
+
+        public static string InvalidPosIntCommandArg(string arg)
+        {
+            return String.Format("Command " +
+                    "expects a positive integer. Instead \"{0}\" is provided.", arg);
         }
 
         public static string InvalidCharCommandArg(string arg)

@@ -1,6 +1,7 @@
 ﻿using DrawingProgram.Canvas;
 using DrawingProgram.Command;
 using DrawingProgram.Parser;
+using DrawingProgram.Printer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +14,10 @@ namespace DrawingProgram
     {
         static void Main(string[] args)
         {
-            var canvas = new SimpleCanvas();
+            var consolePrinter = new ConsolePrinter();
+            var canvas = new SimpleCanvas(consolePrinter);
             var commandParser = new CommandParser(canvas);
+            var invoker = new Invoker();
 
             while (true)
             {
@@ -25,12 +28,17 @@ namespace DrawingProgram
                     break;
                 }
 
+                ICommand command;
                 try
                 {
-                    ICommand command = commandParser.ParseCommand(line);
+                    command = commandParser.ParseCommand(line);
+                    invoker.Command = command;
+                    invoker.ExecuteCommand();
+                    canvas.Print();
                 } catch (Exception ex) {
                     Console.WriteLine(ex.Message);
                 }
+
             }
         }
     }

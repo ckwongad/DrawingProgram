@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Canvas\SimpleCanvas.cs" />
+    <Compile Include="Canvas\SimpleCanvasErrorMsg.cs" />
+    <Compile Include="Invoker.cs" />
     <Compile Include="Parser\CommadParserErrorMsg.cs" />
     <Compile Include="Parser\CommandParser.cs" />
     <Compile Include="Parser\CommandParserException\CommandParserException.cs" />
@@ -54,6 +56,9 @@
     <Compile Include="Command\ICommand.cs" />
     <Compile Include="Command\LineCommand.cs" />
     <Compile Include="Command\RectangleCommand.cs" />
+    <Compile Include="Printer\ConsolePrinter.cs" />
+    <Compile Include="Printer\IPrinter.cs" />
+    <Compile Include="Printer\StringPrinter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
