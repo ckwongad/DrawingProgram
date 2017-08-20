@@ -49,24 +49,12 @@ namespace DrawingProgramTest
             int width = 2;
             int height = 3;
 
-            int outerWidth = width + 2;
-            int outerHeight = height + 2;
-
             simpleCanvas.CreateCanvas(new int[] { width, height });
             var grid = simpleCanvas.Grid;
 
-            Assert.AreEqual<int>(outerWidth, grid.GetLength(0));
-            Assert.AreEqual<int>(outerHeight, grid.GetLength(1));
-            for (int x = 0; x < outerWidth; x++)
-            {
-                Assert.AreEqual<char>('-', grid[x, 0]);
-                Assert.AreEqual<char>('-', grid[x, outerHeight - 1]);
-            }
-            for (int y = 1; y < outerHeight - 1; y++)
-            {
-                Assert.AreEqual<char>('|', grid[0, y]);
-                Assert.AreEqual<char>('|', grid[outerWidth - 1, y]);
-            }
+            Assert.IsNotNull(grid);
+            Assert.AreEqual<int>(width, grid.GetLength(0));
+            Assert.AreEqual<int>(height, grid.GetLength(1));
         }
 
         [TestMethod]

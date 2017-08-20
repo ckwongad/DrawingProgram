@@ -25,19 +25,9 @@ namespace DrawingProgram.Canvas
             if (args[1] < 1)
                 throw new ArgumentException(SimpleCanvasErrorMsg.InvalidCreateCanvasArg(args[1]));
 
-            int outerWidth = args[0] + 2;
-            int outerHeight = args[1] + 2;
-            Grid = new char[outerWidth, outerHeight];
-            for (int x = 0; x < outerWidth; x++)
-            {
-                Grid[x, 0] = '-';
-                Grid[x, outerHeight - 1] = '-';
-            }
-            for (int y = 1; y < outerHeight -1 ; y++)
-            {
-                Grid[0, y] = '|';
-                Grid[outerWidth - 1, y] = '|';
-            }
+            int width = args[0];
+            int height = args[1];
+            Grid = new char[width, height];
         }
 
         public void DrawLine(int[] args)
@@ -60,13 +50,27 @@ namespace DrawingProgram.Canvas
             var width = getWidth();
             var height = getHeight();
 
+            for (int x = 0; x < width + 2 ; x++)
+            {
+                printer.Write('-');
+            }
+            printer.NextLine();
+
             for (int y = 0; y < height; y++)
             {
+                printer.Write('|');
                 for (int x = 0; x < width; x++) {
                     printer.Write(Grid[x, y]);
                 }
+                printer.Write('|');
                 printer.NextLine();
             }
+
+            for (int x = 0; x < width + 2; x++)
+            {
+                printer.Write('-');
+            }
+            printer.NextLine();
         }
 
         private int getWidth()
