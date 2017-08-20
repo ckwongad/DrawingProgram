@@ -385,6 +385,47 @@ namespace DrawingProgramTest
 
             Assert.AreEqual<string>("--------\r\n|ffffff|\r\n|ffxxxf|\r\n|ffx\0xf|\r\n|ffxxxf|\r\n|ffffff|\r\n|ffffff|\r\n--------\r\n", printer.ToString());
         }
+
+        [TestMethod]
+        public void FillLineBoundarySuccess()
+        {
+            int width = 7, height = 4;
+            simpleCanvas.CreateCanvas(new int[] { width, height });
+            simpleCanvas.DrawLine(new int[] { 1, 2, 6, 2 });
+            simpleCanvas.DrawLine(new int[] { 6, 3, 6, 4 });
+            var fillCommandArgs = new FillCommandArgs(1, 4, 'k');
+            simpleCanvas.Fill(fillCommandArgs);
+            simpleCanvas.Print();
+
+            Assert.AreEqual<string>("---------\r\n|\0\0\0\0\0\0\0|\r\n|xxxxxx\0|\r\n|kkkkkx\0|\r\n|kkkkkx\0|\r\n---------\r\n", printer.ToString());
+        }
+
+        [TestMethod]
+        public void FillLineBorderSuccess()
+        {
+            int width = 6, height = 6;
+            simpleCanvas.CreateCanvas(new int[] { width, height });
+            simpleCanvas.DrawLine(new int[] { 3, 2, 5, 2 });
+            simpleCanvas.DrawLine(new int[] { 4, 1, 4, 4 });
+            var fillCommandArgs = new FillCommandArgs(3, 2, 't');
+            simpleCanvas.Fill(fillCommandArgs);
+            simpleCanvas.Print();
+
+            Assert.AreEqual<string>("--------\r\n|\0\0\0t\0\0|\r\n|\0\0ttt\0|\r\n|\0\0\0t\0\0|\r\n|\0\0\0t\0\0|\r\n|\0\0\0\0\0\0|\r\n|\0\0\0\0\0\0|\r\n--------\r\n", printer.ToString());
+        }
+
+        [TestMethod]
+        public void FillRectangleBorderSuccess()
+        {
+            int width = 6, height = 6;
+            simpleCanvas.CreateCanvas(new int[] { width, height });
+            simpleCanvas.DrawRectangle(new int[] { 3, 2, 5, 4 });
+            var fillCommandArgs = new FillCommandArgs(3, 2, 'j');
+            simpleCanvas.Fill(fillCommandArgs);
+            simpleCanvas.Print();
+
+            Assert.AreEqual<string>("--------\r\n|\0\0\0\0\0\0|\r\n|\0\0jjj\0|\r\n|\0\0j\0j\0|\r\n|\0\0jjj\0|\r\n|\0\0\0\0\0\0|\r\n|\0\0\0\0\0\0|\r\n--------\r\n", printer.ToString());
+        }
         #endregion Fill
     }
 }

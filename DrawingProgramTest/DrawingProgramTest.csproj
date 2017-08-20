@@ -60,6 +60,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="InvokerTest.cs" />
     <Compile Include="SimpleCanvasTest.cs" />
+    <Compile Include="CommandTest.cs" />
+    <Compile Include="StringPrinterTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DrawingProgram\DrawingProgram.csproj">
