@@ -137,8 +137,8 @@ namespace DrawingProgram.Canvas
                         var newX = coordinate.x + shifts[i, 0];
                         var newY = coordinate.y + shifts[i, 1];
 
-                        if (IsGridXCoordinateValid(newX)
-                            && IsGridYCoordinateValid(newY)
+                        if (isGridXCoordinateValid(newX)
+                            && isGridYCoordinateValid(newY)
                             && Grid[newX, newY] == colorBeforeFill
                         )
                             newCellsToFill.Add(new Coordinate(newX, newY));
@@ -193,35 +193,35 @@ namespace DrawingProgram.Canvas
             return Grid.GetLength(1);
         }
 
-        private bool IsXCoordinateValid(int x )
+        private bool isXCoordinateValid(int x )
         {
             return x >= 1 && x <= getWidth();
         }
 
-        private bool IsGridXCoordinateValid(int x)
+        private bool isGridXCoordinateValid(int x)
         {
             return x >= 0 && x < getWidth();
         }
 
         private void assertXCoordinate(int x)
         {
-            if (!IsXCoordinateValid(x))
+            if (!isXCoordinateValid(x))
                 throw new ArgumentException(SimpleCanvasErrorMsg.XCoordinateOutOfCanvas(getWidth(), x));
         }
 
-        private bool IsYCoordinateValid(int y)
+        private bool isYCoordinateValid(int y)
         {
             return y >= 1 && y <= getHeight();
         }
 
-        private bool IsGridYCoordinateValid(int y)
+        private bool isGridYCoordinateValid(int y)
         {
             return y >= 0 && y < getHeight();
         }
 
         private void assertYCoordinate(int y)
         {
-            if (!IsYCoordinateValid(y))
+            if (!isYCoordinateValid(y))
                 throw new ArgumentException(SimpleCanvasErrorMsg.YCoordinateOutOfCanvas(getHeight(), y));
         }
 
