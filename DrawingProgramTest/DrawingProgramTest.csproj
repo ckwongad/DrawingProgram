@@ -70,6 +70,7 @@
     <Compile Include="SimpleCanvasTest.cs" />
     <Compile Include="CommandTest.cs" />
     <Compile Include="StringPrinterTest.cs" />
+    <Compile Include="IntegrationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DrawingProgram\DrawingProgram.csproj">

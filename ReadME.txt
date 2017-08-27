@@ -16,4 +16,4 @@ Assumptions
 More Tests:
 1. _canvas of Comands returned from CommandParser should not be the SimpleCanvas used in initialization
 2. use Moq to do behavior test for Invoker and Command (done)
-3. integrated testing
+3. integration testing (done)
