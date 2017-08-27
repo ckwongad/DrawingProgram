@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DrawingProgram.Canvas
 {
-    public class SimpleCanvas
+    public class SimpleCanvas : ICanvas
     {
         private IPrinter printer;
         private char defaultCharToDraw = 'x';

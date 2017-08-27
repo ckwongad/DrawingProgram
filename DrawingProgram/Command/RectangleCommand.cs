@@ -9,15 +9,15 @@ namespace DrawingProgram.Command
 {
     public class RectangleCommand : ICommand
     {
-        protected SimpleCanvas _canvas;
+        protected ICanvas _canvas;
         public int[] Args { get; set; }
 
-        public RectangleCommand(SimpleCanvas canvas)
+        public RectangleCommand(ICanvas canvas)
         {
             _canvas = canvas;
         }
 
-        public RectangleCommand(SimpleCanvas canvas, int[] args)
+        public RectangleCommand(ICanvas canvas, int[] args)
         {
             _canvas = canvas;
             Args = args;

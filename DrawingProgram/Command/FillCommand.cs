@@ -10,15 +10,15 @@ namespace DrawingProgram.Command
 {
     public class FillCommand : ICommand
     {
-        protected SimpleCanvas _canvas;
+        protected ICanvas _canvas;
         public FillCommandArgs FillCommandArgs { get; set; }
 
-        public FillCommand(SimpleCanvas canvas)
+        public FillCommand(ICanvas canvas)
         {
             _canvas = canvas;
         }
 
-        public FillCommand(SimpleCanvas canvas, FillCommandArgs args)
+        public FillCommand(ICanvas canvas, FillCommandArgs args)
         {
             _canvas = canvas;
             FillCommandArgs = args;

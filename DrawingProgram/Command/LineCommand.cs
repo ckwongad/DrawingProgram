@@ -9,15 +9,15 @@ namespace DrawingProgram.Command
 {
     public class LineCommand : ICommand
     {
-        protected SimpleCanvas _canvas;
+        protected ICanvas _canvas;
         public int[] Args { get; set; }
 
-        public LineCommand(SimpleCanvas canvas)
+        public LineCommand(ICanvas canvas)
         {
             _canvas = canvas;
         }
 
-        public LineCommand(SimpleCanvas canvas, int[] args)
+        public LineCommand(ICanvas canvas, int[] args)
         {
             _canvas = canvas;
             Args = args;

@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Canvas\ICanvas.cs" />
     <Compile Include="Canvas\SimpleCanvas.cs" />
     <Compile Include="Canvas\SimpleCanvasErrorMsg.cs" />
     <Compile Include="Invoker.cs" />
