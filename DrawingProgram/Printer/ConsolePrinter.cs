@@ -13,6 +13,11 @@ namespace DrawingProgram.Printer
             Console.Write(_char);
         }
 
+        public void Write(string str)
+        {
+            Console.Write(str);
+        }
+
         public void NextLine()
         {
             Console.WriteLine();

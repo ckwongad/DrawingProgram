@@ -21,7 +21,7 @@ namespace DrawingProgram
 
             while (true)
             {
-                Console.Write("enter command: ");
+                consolePrinter.Write("enter command: ");
                 string line = Console.ReadLine();
                 if (line == "Q") // Exit
                 {
@@ -36,7 +36,8 @@ namespace DrawingProgram
                     invoker.ExecuteCommand();
                     canvas.Print();
                 } catch (Exception ex) {
-                    Console.WriteLine(ex.Message);
+                    consolePrinter.Write(ex.Message);
+                    consolePrinter.NextLine();
                 }
 
             }
