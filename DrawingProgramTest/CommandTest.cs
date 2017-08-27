@@ -16,7 +16,7 @@ namespace DrawingProgramTest
             var mock = new Mock<ICanvas>();
 
             var createCanvasArgs = new int[] { 5, 5 };
-            mock.Setup(_canvas => _canvas.CreateCanvas(createCanvasArgs));
+            //mock.Setup(_canvas => _canvas.CreateCanvas(createCanvasArgs));
 
             var canvas = mock.Object;
             var canvasCommand = new CanvasCommand(canvas, createCanvasArgs);
@@ -31,7 +31,7 @@ namespace DrawingProgramTest
             var mock = new Mock<ICanvas>();
 
             var drawLineArgs = new int[] { 5, 5, 5, 7 };
-            mock.Setup(_canvas => _canvas.DrawLine(drawLineArgs));
+            //mock.Setup(_canvas => _canvas.DrawLine(drawLineArgs));
 
             var canvas = mock.Object;
             var canvasCommand = new LineCommand(canvas, drawLineArgs);
@@ -46,7 +46,7 @@ namespace DrawingProgramTest
             var mock = new Mock<ICanvas>();
 
             var drawRectangleArgs = new int[] { 5, 5, 8, 9 };
-            mock.Setup(_canvas => _canvas.DrawRectangle(drawRectangleArgs));
+            //mock.Setup(_canvas => _canvas.DrawRectangle(drawRectangleArgs));
 
             var canvas = mock.Object;
             var canvasCommand = new RectangleCommand(canvas, drawRectangleArgs);
@@ -61,7 +61,7 @@ namespace DrawingProgramTest
             var mock = new Mock<ICanvas>();
 
             var fillArgs = new FillCommandArgs(5, 5, 'c');
-            mock.Setup(_canvas => _canvas.Fill(fillArgs));
+            //mock.Setup(_canvas => _canvas.Fill(fillArgs));
 
             var canvas = mock.Object;
             var canvasCommand = new FillCommand(canvas, fillArgs);

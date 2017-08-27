@@ -22,7 +22,7 @@ namespace DrawingProgramTest
         {
             var mock = new Mock<ICommand>();
 
-            mock.Setup(_command => _command.Execute());
+            //mock.Setup(_command => _command.Execute());
 
             var command = mock.Object;
             var invoker = new Invoker();
