@@ -11,9 +11,9 @@ namespace DrawingProgram.Parser
 {
     public class CommandParser
     {
-        protected SimpleCanvas _canvas;
+        protected ICanvas _canvas;
 
-        public CommandParser(SimpleCanvas canvas)
+        public CommandParser(ICanvas canvas)
         {
             _canvas = canvas;
         }

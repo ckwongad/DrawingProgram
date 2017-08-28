@@ -9,6 +9,7 @@ namespace DrawingProgram.Printer
     public interface IPrinter
     {
         void Write(char _char);
+        void Write(string str);
         void NextLine();
     }
 }

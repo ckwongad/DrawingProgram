@@ -15,6 +15,11 @@ namespace DrawingProgram.Printer
             stringBuilder.Append(_char);
         }
 
+        public void Write(string str)
+        {
+            stringBuilder.Append(str);
+        }
+
         public void NextLine()
         {
             stringBuilder.Append(Environment.NewLine);
@@ -23,6 +28,11 @@ namespace DrawingProgram.Printer
         public override string ToString()
         {
             return stringBuilder.ToString();
+        }
+
+        public void Clear()
+        {
+            stringBuilder.Clear();
         }
     }
 }
